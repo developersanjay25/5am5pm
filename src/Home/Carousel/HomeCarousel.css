@@ -1,0 +1,10 @@
+.carousel .carousel-status{
+    display: none;
+}
+
+.carousel.carousel-slider .control-arrow{
+    border-radius: 50%;
+    height: fit-content;
+    position: absolute;
+    top: 300px;
+}

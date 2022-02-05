@@ -1,0 +1,147 @@
+body {
+  margin: 0px;
+  padding: 0%;
+}
+#welcome {
+  width: 300px;
+  font-size: 30px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.home {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  height: calc(100vh - 75px);;
+}
+.dropdownhome{
+  padding: 10px 10px;
+  width: 100%;
+  /* border-radius: 5px; */
+  /* margin-left: 7px; */
+  border: 1px solid #bdbdbd;
+  color: gray;
+}
+.home .welcome{
+  font-family: Fertigo_PRO;
+  color: white;
+}
+.buttonconatiner button {
+  background-color: white;
+  border: none;
+  font-size: 15px;
+  margin-top: 20px;
+  font-family: 'MYRIAD_PRO';
+  border-radius: 3px;
+}
+.tabcontent {
+  display: none;
+  /* min-height: 170px; */
+}
+
+.tabcontent button {
+  background-color: #01d63d;
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 10px;
+  width: 90%;
+  display: flex;
+  margin: auto;
+  border-radius: 20px;
+  justify-content: center;
+  cursor: pointer;
+}
+.tabcontent input[type="text"] {
+  padding: 10px;
+  margin-top: 20px;
+  width: 300px;
+}
+
+#white-board{
+  top:10px;
+  left: 10px;
+  width: fit-content;
+  cursor :auto;
+  padding: 0 3px;
+  z-index: 1;
+  margin:10px 0px 0px 10px;
+}
+
+.btn {
+  background-color: #0000ff;
+  color: white;
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+}
+#holecontainer {
+  width: 400px;
+  flex-wrap: wrap;
+}
+
+.audioswitch {
+  size: 1px;
+}
+
+#mediacon,
+.tab-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin: 10px;
+}
+#mediacontainer ul li p {
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.videoview {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  object-fit: cover;
+  height: 230px;
+}
+#mediadevices {
+  width: fit-content;
+  margin: auto;
+}
+#mediadevices select {
+  padding: 10px;
+  margin-left: 20px;
+  border-radius: 12px;
+}
+#scheduledtime{
+  text-align: center;
+  color: white;
+  font-family: FERTIGO_PRO;
+  padding: 10px;
+}
+@media screen and (max-width: 760px) {
+  .home {
+    width: min-content;
+    margin: auto;
+  }
+
+  #mediadevices {
+    margin-bottom: 30px;
+  }
+  #mediadevices select {
+    margin-top: 10px;
+  }
+
+  .tabcontent input[type="text"] {
+    margin-top: 10px;
+  }
+}
+
+/* Equilizer */
+
+#audioequilizerr{
+  display: block;
+  margin: auto;
+  padding-top: 10px;
+}

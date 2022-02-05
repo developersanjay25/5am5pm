@@ -1,0 +1,92 @@
+#chat {
+  max-height: 100vh;
+}
+#messages {
+  height:calc(100vh - 105px);
+  overflow: auto;
+  padding: 5px 5px 0px 5px;
+}
+
+#sendChat .sendfield {
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  background: #f1f3f4;
+  min-height: 40px;
+  border: 1px solid #00a7eb;
+  width:100%;
+}
+#sendmessage {
+  height: fit-content;
+  color: #0070ba;
+}
+.home #contacts {
+  height: 100%;
+
+}
+/* #overflow .makeStyles-drawerPaper-21 {
+  overflow: hidden !important;
+} */
+
+.MuiTab-textColorSecondary.Mui-selected {
+border-bottom: 2px solid blue !important;
+}
+
+.fileicon{
+  position:absolute;
+  bottom:40px;
+  background: white;
+  width: 100%;
+  text-align: center;
+}
+
+#ulofmessage{
+    display: inline-flex;
+}
+#mychat .myavatar {
+  height:45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.home .avatar {
+  width: 30px;
+  clear: right;
+}
+#localvideo{
+  text-align: right;
+  height:170px;
+  /* margin: 5px 0px; */
+  object-fit: cover;
+  width: 235px;
+  /* background-image: url('../../Images/meetimages/videobackground.png'); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#myrole{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#yourvideo
+{
+  text-align: right;
+  height: 180px;
+  margin: 5px;
+  object-fit: cover;
+  width: 240px;
+  display: inline-block;
+  position: relative;
+  /* background-color: #3c4043; */
+}
+.yourvideocolumn
+{
+  float: right;
+}
+
+#msgginline{
+  display: inline-flex;
+  vertical-align: text-top;
+}

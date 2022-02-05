@@ -1,0 +1,50 @@
+#bottom-icon-bar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+}
+.dropdown{
+  padding: 18px 10px;
+  width: 100%;
+  border-radius: 5px;
+  /* padding-right: 20px; */
+  margin-left: 7px;
+  border: 1px solid #bdbdbd;
+  color: gray;
+}
+.icon-bar-left {
+  font-family: 'MYRIAD_PRO';
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.icon-bar-center {
+  flex: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.icon-bar-right {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+}
+
+.inline {
+  display: inline-flex; 
+}
+.inline div{
+  width: 120px;
+  margin: 5px;
+}

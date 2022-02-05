@@ -1,0 +1,65 @@
+.insDashboardpaper{
+    width: 100%;
+    height: 120px;
+}
+
+.insIconStyle{
+    font-size: 50px !important;
+    color: #003db3;
+}
+
+.insPaperTxt{
+    font-size: 36px !important;
+    color: #003db3;
+}
+
+.vericalalignstyle{
+    text-align: left;
+    padding-left: 15px;
+}
+.vericalalignstyle1{
+    text-align: right;
+    padding-right: 15px;
+}
+
+.cardCenter{
+    text-align: center;
+}
+
+.imgprofilecontainer{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.testclass{
+    display: flex;
+    align-items: flex-end;
+    justify-content: left;
+    height: 250px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.stafbackGroundimg{
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
+                                                                /* 
+
+
+                                                                    wallet */
+
+
+                                                                    .walletHeader{
+                                                                        text-align: center;
+                                                                        color: #003db3 !important;
+                                                                        font-weight: 700!important;
+                                                                    }
+
+                                                                    .walletRupeeSymbol{
+                                                                        font-size: 24px !important;
+                                                                        font-weight: 400 !important;
+                                                                    }

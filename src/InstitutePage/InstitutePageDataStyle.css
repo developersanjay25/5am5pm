@@ -1,0 +1,12 @@
+.bimg{
+    background-image: url("../Images/Institutes/Ins1.png");
+    width: 100%;
+    height: auto;
+}
+.paperStyle{
+    height: 100px;
+    text-align: center;
+    margin-top: -30px;
+}
+
+

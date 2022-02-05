@@ -1,0 +1,10 @@
+.lg-outer .lg-img-wrap{
+    /* z-index: 20005 !important; */
+}
+.lg-outer {
+    z-index: 2100 !important;
+}
+.lg-backdrop 
+{
+z-index: 2000 !important;
+}

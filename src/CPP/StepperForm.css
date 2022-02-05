@@ -1,0 +1,75 @@
+
+
+#addUsers-container{
+    width: 100%;
+    
+}
+
+#addUsers{
+    font-size: 50px;
+    color: #003db3;
+    text-align: right !important;
+    margin-top: 5%;
+    cursor: pointer;
+}
+
+
+/* plans and pricing css styles */
+
+#subscription-container{
+    width: 100% !important;
+}
+
+#rupeeSymbol{
+    font-size: 20px;
+}
+#planPrice{
+    font-size: 60px;
+}
+#divider{
+    height: 2px;
+    color: #003db3 !important;
+}
+
+
+.stepperFormAlignmentStyle{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.cppheightStyle1{
+    width:100%;
+    height:10px;
+}
+
+.cppheightStyle2{
+    width:100%;
+    height:25px;
+}
+
+.cppstepperStyle{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.domainwhitelableStyle{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.gotoDash{
+    display: flex;
+    width: 100%;
+    height: 80vh;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,26 @@
+.textstyleeclipse{
+    white-space: nowrap; 
+    width: 350px;  
+    text-align: center;
+}
+
+.abcd{
+    text-align: center;
+    white-space: nowrap; 
+    width: 250px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    margin:10px !important;
+}
+
+.draweraccountsubtitle{
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: 20px;
+    font-weight: 900 !important;
+}
+
+.draweraccountdata{
+    display: inline-flex;
+    vertical-align: middle;
+}

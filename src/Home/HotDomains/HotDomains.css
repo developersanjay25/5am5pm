@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Gorditas:wght@400;700&display=swap');
+
+.hotDomains{
+    font-family: Gorditas;
+    font-size: 36px;
+    text-align: center;
+}
+
+.HotdoaminImages{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    background: rgba(6, 6, 6, 0.7);
+}
+
+.allcourse-card{
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.allcourse-card::after{
+    content: '';
+    background: rgba(6, 6, 6, 0.7);
+    position: absolute;
+    top: 0;
+    bottom: 4px;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+}
+
+.allcourse-content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+.Design{
+    color: #fff;
+    font-size: 24px;
+    z-index: 10000;
+}
+
+.allcourse-content p{
+    color: #fff;      
+}
+
+#allcoursecontent-span{
+    color: #003db3;
+}
+
+.allcourse-content::after{
+    position: absolute;
+    background-color: #fff;
+}
+
+.course-view-all{
+    background: #003db3;
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid #003db3;
+    cursor: pointer;
+}

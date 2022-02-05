@@ -1,0 +1,18 @@
+.courseSummaryEdit:hover{
+    color:'#003db3',
+}
+
+
+
+.yourcarttotal{
+    font-size: 16px !important;
+    font-weight: 500 !important;
+}
+
+.subtotal{
+    padding-left: 24px;
+}
+.subtotalamount{
+    text-align: right !important;
+    padding-right: 24px;
+}

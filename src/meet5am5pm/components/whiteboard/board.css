@@ -1,0 +1,9 @@
+.board{
+    background-color: white;
+    margin: 0 auto;
+    border: 5px solid #3c4043;
+    /* cursor: url('../../../images/Pencil.cur'),all-scroll; */
+}
+.upper-canvas{
+    background: transparent;
+}

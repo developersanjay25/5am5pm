@@ -1,0 +1,27 @@
+.loginBG{
+    background-image: url(../Images/pattern/11.png);
+    background-color: #003db3;
+    background-repeat: repeat; 
+    display: block;
+    width: 100%;
+    height: 100vh;
+}
+
+.loginStyle{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loginstylepadding{
+    padding: 24px;
+}
+
+    @media only screen and (max-width: 600px) {
+        .responsiveStyle{
+          display: none;
+        }
+       
+      }

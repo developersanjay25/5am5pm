@@ -1,0 +1,218 @@
+#messagewrap {
+  width: 400px;
+  height: 700px;
+}
+body {
+  overflow: auto;
+}
+#messages {
+  overflow: auto;
+}
+#send {
+  width: 325px;
+  margin: 0px;
+  margin-top: 10px;
+  height:60px;
+}
+.btn {
+  width: 70px;
+  margin: 0px;
+  margin-top: 21px;
+}
+.home #onlinwrap {
+  width: 400px;
+}
+.home #camera {
+  width: 30px;
+  height: 20px;
+  padding: 3px;
+  margin-left: 10px;
+}
+#mic {
+  height: 25px;
+  width: 20px;
+  padding: 3px;
+  margin-left: 10px;
+}
+
+.buttonconatiner button {
+  padding: 8px;
+}
+
+.online {
+  margin-left: -200px;
+}
+#onlinewrap {
+  display: inline;
+}
+li {
+  display: inline;
+}
+section {
+  margin-top: 20px;
+}
+#msg {
+  background-color: blue;
+  color: white;
+  max-width: 200px;
+  width: max-content;
+  padding: 10px;
+  clear: both;
+  border-radius: 10px;
+  margin-left: 3px;
+  clear: both;
+  border-radius: 0px 15px 10px 10px;
+}
+#msgg {
+  clear: both;
+  margin-top: 0px;
+  margin-bottom: -10px;
+}
+.mychat {
+  background-color: wheat;
+  color: black;
+  width: 200px;
+  padding: 10px;
+  /* margin-top: -20px; */
+  margin-right: 33px;
+  margin-bottom: 5px;
+  border-radius: 10px 0px 10px 15px;
+  float: right;
+  clear: both;
+}
+#mychat {
+  margin-top: 5px;
+  float: right;
+  margin-right: 8px;
+  clear:both;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.home #chatlogo {
+  width: 50px;
+}
+
+#messageonline {
+  display: none;
+  float: right;
+  margin-top: -55px;
+  height: 800px;
+  width: fit-content;
+  margin-right: 10px;
+  box-shadow: -5px 0px 10px 1px #aaaaaa;
+  padding-left: 10px;
+  padding-top: 10px;
+  background-color: #f0f0f0;
+}
+#messageonline #btncontainer .chatopen,
+.home .peopleopen {
+  background: none;
+  border: none;
+  width: 200px;
+  color: black;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  padding: 15px;
+}
+.home #send {
+  padding: 10px;
+}
+.home #icons {
+  float: right;
+}
+.home #logo img {
+  width: 50px;
+  height: 50px;
+  padding: 8px;
+  margin: 0%;
+}
+.home #logo {
+  width: fit-content;
+  margin: auto;
+}
+.home #cancel {
+  height: 20px;
+  margin-left: 380px;
+  clear: both;
+}
+.home #online {
+  margin-top: 20px;
+}
+.home #avatar {
+  width: 30px;
+  clear: right;
+}
+.home #onlinepeoplename {
+  width: 170px;
+  margin-left: 10px;
+  padding: 0%;
+  size: 15px;
+}
+.home #msgg ul li {
+  display: inline-flex;
+}
+#mychat ul li {
+  display: inline-flexbox;
+  clear: both;
+}
+.home #micmute {
+  width: 23px;
+}
+.home #joinpage input {
+  padding: 10px;
+}
+.home #joinpage {
+  width: fit-content;
+  margin: auto;
+  margin-top: 300px;
+}
+.home .tabcontent1 {
+  width: fit-content;
+  margin: auto;
+  margin-top: 200px;
+}
+.home .tabcontent1 input {
+  padding: 10px;
+  width: 400px;
+  margin-top: 20px;
+}
+.home #logo #chat #messagecounter {
+  margin-top: 100px;
+  color: blue;
+}
+.home #time {
+  margin-top: 8px;
+  margin-left: 50px;
+  font-size: 13px;
+}
+.home #mytime {
+  margin-top: 15px;
+  margin-left: 30px;
+  font-size: 13px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

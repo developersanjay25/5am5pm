@@ -1,0 +1,173 @@
+:root,[data-theme=default]{
+    --jotia: Jotia !important;
+    --normal: normal;
+    --normal-font-weight: 300px;
+    --medium: medium;
+    --font-xxs: 12px;
+    --font-xs: 13px;
+    --font-s: 15px;
+    --font-m: 16px;
+    --font-l: 18px;
+    --font-xl: 24px;
+    --font-xxl: 30px;
+    --font-xxxl: 40px;
+    --font-h1: var(--font-xxxl);
+    --font-h1-s: var(--font-xxl);
+    --font-h2: var(--font-xxl);
+    --font-h2-s: var(--font-xl);
+    --font-h3: var(--font-xl);
+    --font-h3-s: var(--font-l);
+    --font-h4: var(--font-l);
+    --font-h4-s: var(--font-m);
+    --input-label: 17px;
+    --input-label-s: 13px;
+    --zero: 0;
+    --space-xxs: 18px;
+    --space-xs: 20px;
+    --space-s: 22px;
+    --space-m: 24px;
+    --space-l: 30px;
+    --space-xl: 36px;
+    --space-xxl: 44px;
+    --space-xxxl: 70px;
+    --primary1-border: 2px solid #5c0931;
+    --primary2-border: 2px solid #ffa903;
+    --text-center: center;
+    --dir: ltr;
+}
+
+
+body
+{
+    padding: 0;
+    margin: 0;
+    background: #fff;
+    font-weight: 400;
+    line-height: 1.5;
+    font-family: var(--jotia) !important;
+    font-family: var(--jotia) !important;
+}
+.title {
+    font-weight: 300;
+    color: #333;
+    letter-spacing: -1px;
+    font-size: var(--font-h2);
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia_thin.woff);
+    src: url(jotia_thin.eot) format("embedded-opentype"), url(jotia_thin.woff) format("woff"), url(jotia_thin.ttf) format("truetype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia_light.woff);
+    src: url(jotia_light.eot) format("embedded-opentype"), url(jotia_light.woff) format("woff"), url(jotia_light.ttf) format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia.woff);
+    src: url(jotia.eot) format("embedded-opentype"), url(jotia.woff) format("woff"), url(jotia.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia_medium.woff);
+    src: url(jotia_medium.eot) format("embedded-opentype"), url(jotia_medium.woff) format("woff"), url(jotia_medium.ttf) format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia_bold.woff);
+    src: url(jotia_bold.eot) format("embedded-opentype"), url(jotia_bold.woff) format("woff"), url(jotia_bold.ttf) format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: Jotia;
+    src: url(jotia_heavy.woff);
+    src: url(jotia_heavy.eot) format("embedded-opentype"), url(jotia_heavy.woff) format("woff"), url(jotia_heavy.ttf) format("truetype");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+.quickheader
+{
+    background: white;
+    font-family: Jotia;
+}
+.menuheader
+{
+    height: 120px;
+    width: 100%;
+}
+.container {
+    position: relative;
+    width: 50%;
+  }
+  
+  .image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    overflow: hidden;
+    width: 100%;
+    height: 30%;
+    transition: .5s ease;
+    color: black;
+  }
+  
+  .container:hover .overlay {
+    height: 100%;
+    background-color:blue;
+  }
+  
+  .text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .boxslide:hover {
+    box-shadow: 0 6px 22px -5px rgb(0 0 0 / 10%), 0 0 6px -1px rgb(0 0 0 / 10%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

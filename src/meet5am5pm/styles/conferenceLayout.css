@@ -1,0 +1,148 @@
+#layout {
+  height: 95%;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition:0.3s all ease-in-out;
+  z-index:0;
+}
+.largevideo{
+  width: 80%;
+  margin: auto;
+  position: relative;
+  height: 100%;
+}
+#layoutHost {
+  /* flex: 7; */
+  min-height: calc(100% - 190px);
+  height: 90%;
+}
+.visitor {
+  min-width: 240px;
+  width:240px;
+  flex-basis: 150px;
+  height: 170px !important;
+  margin: 5px;
+  display: inline-block;
+  vertical-align: top;
+  border:1px solid gray;
+  position: relative;
+  /* display: none; */
+  background-image: url(../../Images/meetimages/videobackground.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#audioequilizer{
+  margin:auto;
+  border-bottom: 2px solid white;
+  display:none
+}
+.recordbtn{
+  height: 30px;
+  width: 30px;
+  left: 3px;
+  top : 3px;
+  position: absolute;
+  z-index: 2;
+}
+.videoownername{
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  color: white;
+  margin: 0px;
+}
+.layoutRow{
+  white-space: unset;
+  /* padding-left: 200px; */
+}
+.layoutColumn{
+  white-space: nowrap;
+}
+
+#layoutVisitor::-webkit-scrollbar { 
+  display: none;  
+}
+
+#layoutVisitor{
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  
+}
+#layoutVisitor{
+  scroll-behavior: smooth;
+}
+
+/* Row */
+.layoutvisitorrow{
+  height: 100%;
+  width: 250px;
+  height: 570px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flexbox;
+  flex-direction: row;
+  margin-top: 5px;
+}
+
+.layouthostrow{
+  display: block;
+  width: calc(100% - 300px);;
+}
+.layoutrow{
+   width: 100%;
+}
+
+/* Gallery */
+.layoutgallery{
+  width: clamp(200px, 70%, 1200px);
+}
+.layoutvisitorgallery{
+  text-align: center;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+.layouthostgallery{
+  display: none;
+}
+
+.arrowbutton{
+  position : absolute;
+  z-index: 3;
+  background-color: blue;
+  color:white;
+}
+
+/* Column */
+.layoutcolumn{
+  width: clamp(200px, 70%, 1200px);
+ }
+ .layoutvisitorcolumn{
+   text-align: left;
+   max-height: 180px;
+   height: auto;
+   width: 100%;
+   overflow-x: auto;
+   overflow-y: hidden;
+   display: inline-block;
+   white-space: nowrap;
+ }
+ .layouthostcolumn{
+   display: block;
+ }
+
+ .layouthostcolumn .largevideo{
+   height: 100%;
+ }
+
+ .hide{
+   display: none;
+ }
+ .show{
+   display:block;
+ }
