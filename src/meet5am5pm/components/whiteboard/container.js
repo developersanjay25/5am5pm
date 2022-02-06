@@ -67,20 +67,20 @@ function Container()
     } 
 
 function circle(){
-    addCircle(1,color,uuid());
+    addCircle(1,brushcolor,uuid());
 }
 function square()
 {
-    addSquare(1,color,uuid())
+    addSquare(1,brushcolor,uuid())
 }
 function line(){
-    addLine(1,color,uuid())
+    addLine(1,brushcolor,uuid())
 }
 function triangle(){
-    addTriangle(1,color,uuid())
+    addTriangle(1,brushcolor,uuid())
 }
 function rectangle(){
-    addRect(1,color,uuid())
+    addRect(1,brushcolor,uuid())
 }
     
 
@@ -114,20 +114,20 @@ function rectangle(){
 
                    
                     <Tooltip title="Pen" TransitionComponent={Zoom}>
-                    <IconButton  style={{color:'black'}} onClick={(e) => {setcolor(brushcolor);setType('pen');pencil()}}>
+                    <IconButton  style={{color:'black'}} onClick={(e) => {setcolor(brushcolor);setType('pen');pencil();setPopoverE1(e.currentTarget);}}>
                         <icons.Create/>
                     </IconButton>
                     </Tooltip>
                     
-                    <br/>
+                    {/* <br/> */}
 
                     {/* <TextField variant='filled' value={size} size='small' label='size' style={{width:'50px'}} onChange={(e) => {setsize(e.target.value)}} /> */}
                     
-                    <Tooltip title="Size" TransitionComponent={Zoom}>
+                    {/* <Tooltip title="Size" TransitionComponent={Zoom}>
                     <IconButton  style={{color:'black'}} onClick={(e) => {setPopoverE1(e.currentTarget);}}>
                         <icons.BrushOutlined/>
                     </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
 
                     {/* <Popover
                     open={openpopover}

@@ -37,7 +37,7 @@ var modee = atom({
 
 var clearcanvass = atom({
     key : 'clearcanvass',
-    default : true
+    default : false
 })
 
 var renderr = atom({

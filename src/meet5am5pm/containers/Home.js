@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react';
 import Tabs from "../components/home/Tabs";
 import Mediacontainer from "../components/home/Mediacontainer";
 import Devicegetting from '../components/conference/devicegetting';
-import { emaill, joinn, namee, namejoinn, roomjoinn, rolee, roomm, sidepanell } from "../atoms/atoms";
+import { emaill, joinn, namee, namejoinn, roomjoinn, rolee, roomm, sidepanell, courseidd } from "../atoms/atoms";
 import Header from "../components/initial/Header";
 import "../styles/main.css";
 import { Drawer, Typography } from "@material-ui/core";
@@ -28,10 +28,9 @@ function Home() {
   const [join, setjoin] = useRecoilState(joinn);
   const [email, setEmail] = useRecoilState(emaill);
   const [role, setRole] = useRecoilState(rolee);
+  const [courseid, setCourseid] = useRecoilState(courseidd);
   const [date,setDate] = useState();
   const [time,setTime] = useState();
-  const [datenow,setDatenow] = useState();
-  const [timenow,setTimenow] = useState();
   
   //settings 
   const [opendialog,setOpendialog] = useRecoilState(opendialogg);
@@ -44,9 +43,6 @@ function Home() {
   
   const [oldDeviceId,setOldDeviceId] = useRecoilState(olddeviceid);
 
-//  Dummy login
-    // setNamejoin('sanjay');
-    // setEmail('sanjaynagarajan25@gmail.com');
 
     const { room } = queryString.parse(window.location.search);
     console.log("home",room);
@@ -55,6 +51,8 @@ function Home() {
       console.log(res);
       setDate(res.data.data.date);
       setTime(res.data.data.time);
+      setCourseid(res.data.data.course_id);
+
     }).catch((err) => {
       console.log(err);
     })
@@ -65,8 +63,8 @@ function Home() {
       setNamejoin(resp.data.data[0].first_name);
       setRole(resp.data.data[0].role);
 
-      console.log(resp.data.data[0].first_name);
-      
+          console.log(resp.data.data[0].first_name);
+  
           console.log(resp.data);
       
       }).catch((err) => {

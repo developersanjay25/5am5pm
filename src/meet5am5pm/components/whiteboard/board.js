@@ -319,6 +319,7 @@ function Board(props)
    const [size,setsize] = useRecoilState(sizee);
    const [mode,setMode] = useRecoilState(modee);
    const [clearcanvas,setClearcanvas] = useRecoilState(clearcanvass);
+   const initialRender = React.useRef(true);
    const {room} = queryString.parse(window.location.search);
    roomm = room; 
 
@@ -543,6 +544,7 @@ function mousemove(e){
                 })
 
                 socket.on('clearcanvas', () => {
+                    alert('clear canvas');
                     canvasclear();
                 })
     },[])
@@ -569,7 +571,11 @@ type = props.brushtype;
 
     // Send clear data canvas
     useEffect(()=> {
-        socket.emit('clearcanvas',{msg: 'clear',room : room});
+        if(!initialRender.current)
+        {
+            socket.emit('clearcanvas',{msg: 'clear',room : room});
+    }
+    initialRender.current = false;
     },[clearcanvas])
 
 

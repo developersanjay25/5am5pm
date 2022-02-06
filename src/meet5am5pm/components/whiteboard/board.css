@@ -7,3 +7,12 @@
 .upper-canvas{
     background: transparent;
 }
+
+.css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+}
+.css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover{
+    background-color: white !important;
+}

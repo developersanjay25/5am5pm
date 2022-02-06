@@ -410,6 +410,7 @@ function StartJanusServerRoom(props)
 						var register = {
 							request: "join",
 							room: myroom,
+							pin : pin,
 							ptype: "publisher",
 							display: 'screenshare ' + username,
 							record:true,
@@ -682,7 +683,8 @@ function StartJanusServerRoom(props)
 	{
 		const register = { "request": "joinandconfigure", "room": myroom, "ptype": "publisher","record" : false,
 		"rec_dir" : "/var/www/vhost/janusone.nowdigitaleasy.com/recordings" ,
-		pin : pin,
+		// pin : pin,
+		"private_id" : pin,
 		"secret" : secret,
 		"display": role+" "+name };
 					console.log("join register",register)
@@ -769,6 +771,7 @@ function StartJanusServerRoom(props)
 				// pass a ?simulcast=true when opening this demo page: it will turn
 				// the following 'simulcast' property to pass to janus.js to true
 				simulcast: doSimulcast,
+				pin : pin,
 				simulcast2: true,
 				customizeSdp: function(jsep) {
 					// If DTX is enabled, munge the SDP

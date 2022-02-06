@@ -1,3 +1,5 @@
+
+   
 import React from 'react';
 import { useRecoilState } from 'recoil';
 import { Recordon } from '../../atoms/chatatoms';
@@ -11,28 +13,32 @@ var stream;
 import CircularProgress from '@mui/material/CircularProgress'
 import {Box,Typography} from '@mui/material';
 import Backdrop from '@mui/material/Backdrop';
+import { courseidd } from '../../atoms/atoms';
+
+var mediaRecord;
 
 function Recording(){
 
-  const [isRecordon, setIsRecordOn] = useRecoilState(Recordon);
-  const [record, setRecord] = React.useState(false);
-  const [mediaRecorder, setMediaRecorder] = React.useState();
-  const [percentCompleted, setPercentcompleted] = React.useState(0);
-  const [recordupload, setRecordUpload] = React.useState(false);
 
+    const [isRecordon, setIsRecordOn] = useRecoilState(Recordon);
+    const [courseid, setCourseid] = useRecoilState(courseidd);
+    const [record, setRecord] = React.useState(false);
+    const [mediaRecorder, setMediaRecorder] = React.useState();
+    const [percentCompleted, setPercentcompleted] = React.useState(0);
+    const [recordupload, setRecordUpload] = React.useState(false);
   
-const queryParams = new URLSearchParams(window.location.search);
-const room = queryParams.get("room");
-
-  const firstRender = React.useRef(true);
-
-  var commonConfig = {
+    
+  const queryParams = new URLSearchParams(window.location.search);
+  const room = queryParams.get("room");
+  
+    const firstRender = React.useRef(true);  
+    
+    var commonConfig = {
     onMediaCaptured: function(streamm) {
         stream = streamm;
         // if(button.mediaCapturedCallback) {
         //     button.mediaCapturedCallback();
         // }
-        setMediaRecorder(stream)
         console.log('stream',stream)
         // button.innerHTML = 'Stop Recording';
         // button.disabled = false;
@@ -50,13 +56,13 @@ React.useEffect(() => {
     startstoprecord();
     }
     else{
-        console.log('record',stream,mediaRecorder)
-        if(stream && mediaRecorder) {
-            mediaRecorder.getTracks().forEach(function(track) {
-                track.stop();
-                setRecord(false);
-              });
+        console.log('record',stream)
+        if(stream) {
+            // mediaRecorder.stop();
+            setRecord(false);
+            // stream = null;
         }
+
         if(stream instanceof Array) {
             stream.forEach(function(stream) {
                 stream.stop();
@@ -76,13 +82,9 @@ function startstoprecord()
         // stopStream();
     console.log('stopped',stream,stream.stop);
         function stopStream() {
-            if(stream && mediaRecorder) {
-                // .stop();
-                mediaRecorder.getTracks().forEach(function(track) {
-                    track.stop();
-                    setRecord(false);
-
-                  });
+            if(stream) {
+                // mediaRecorder.stop();
+                setRecord(false);
                 // stream = null;
             }
 
@@ -105,6 +107,8 @@ function startstoprecord()
 }
 
 
+
+
 let formdata =  new FormData();
 var config = {
     onUploadProgress: function(progressEvent) {
@@ -113,25 +117,26 @@ var config = {
     }
   };
 
+
 function apicall(blob){
-formdata.append('file',blob);
-
-const token = localStorage.getItem('token');
-setRecordUpload(true);
-console.log(formdata,blob);
-axios.patch(`https://app.5am5pm.com:3000/staf/upload_blob?meeting_id=${room}&course_id=61f4fc0851c4844f289ed7fc`,formdata,config, {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-}).then((data) => {
-        console.log('blobb',data);
+    formdata.append('file',blob);
+    
+    const token = localStorage.getItem('token');
+    setRecordUpload(true);
+    console.log(formdata,blob);
+    axios.patch(`https://app.5am5pm.com:3000/staf/upload_blob?meeting_id=${room}&course_id=${courseid}`,formdata,config, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+    }).then((data) => {
+            console.log('blobb',data);
+            setRecordUpload(false);
+    }).catch((err) => {
+        console.log('blobb',err.response);
         setRecordUpload(false);
-}).catch((err) => {
-    console.log('blobb',err.response);
-    setRecordUpload(false);
-}
-)}
-
+    }
+    )}
+    
 function addStreamStopListener(stream, callback) {
     stream.addEventListener('ended', function() {
         callback();
@@ -143,6 +148,7 @@ function addStreamStopListener(stream, callback) {
     }, false);
     stream.getTracks().forEach(function(track) {
         track.addEventListener('ended', function() {
+            mediaRecord.stop();
             callback();
             callback = function() {};
         }, false);
@@ -183,11 +189,15 @@ function captureAudioPlusScreen(config) {
                 config.onMediaCaptured(screenStream);
                 setRecord(true);
                 // stream = screenStream;
-                var mediaRecord = new MediaRecorder(screenStream);
+                mediaRecord = new MediaRecorder(screenStream);
+                
+                // mediaRecorder = mediaRecord;
 
-                // setMediaRecorder(mediaRecord);
 
                 mediaRecord.start();
+                console.log('media recorder',mediaRecord.state);
+
+                // setMediaRecorder(mediaRecord);
 
                 mediaRecord.ondataavailable = function(e){
                     chunk.push(e.data);
@@ -219,6 +229,7 @@ function captureAudioPlusScreen(config) {
         alert(error);
     }
 }
+
 
 
 

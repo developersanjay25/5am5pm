@@ -20,6 +20,13 @@ var rolee = atom({
     default : '' 
 });
 
+
+var courseidd = atom({
+    key : 'courseidd',
+    default : '' 
+});
+
+
 var namee = atom({
     key : 'namee',
     default : '' 
@@ -40,4 +47,4 @@ var sidepanell =atom({
     key : 'sidepanell',
     default : false
 })
-export  {namejoinn,roomjoinn,sidepanell,rolee,emaill,namee,roomm,joinn}
+export  {namejoinn,roomjoinn,courseidd,sidepanell,rolee,emaill,namee,roomm,joinn}
