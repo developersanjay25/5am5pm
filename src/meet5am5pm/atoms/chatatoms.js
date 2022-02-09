@@ -10,6 +10,17 @@ var overflowcheckk = atom({
     default : false
 })
 
+var Rightbuttonn = atom({
+    key : 'Rightbuttonn',
+    default : 'none'
+})
+
+var leftbuttonn = atom({
+    key : 'leftbuttonn',
+    default : 'none'
+})
+
+
 var chatcontactt = atom({
     key : 'chatcontactt',
     default : "CHAT"
@@ -207,4 +218,6 @@ var othersmessagee = atom({
     key : 'othersmessagee',
     default : false
 })
-export {handrise,Recordon,swiperreff,chatcontactt,olddeviceid,audiostream1,Toastt,screensharee,ismutedd,bandwidthh,videoresolutionn,audiooutputdevicee,camerachangee,permissionn,opendialogg,settingspreload,videodevicee,audiodevicee,clearcanvass,sockett,modee,colorr,sizee,whiteboard,chatopenn,overflowcheckk,messagecountt,onlineuserr,videoo,audioo,nameofuser,Joinn,videostream,audiostream,disablee,renderr,publisherr,openlayoutmenuu,mymessagee,othersmessagee}
+export {handrise,Recordon,swiperreff,chatcontactt,olddeviceid,audiostream1,Toastt,screensharee,ismutedd,bandwidthh,videoresolutionn,audiooutputdevicee,camerachangee,permissionn,opendialogg,settingspreload,videodevicee,audiodevicee,clearcanvass,sockett,modee,colorr,sizee,whiteboard,chatopenn,overflowcheckk
+    ,leftbuttonn,Rightbuttonn 
+    ,messagecountt,onlineuserr,videoo,audioo,nameofuser,Joinn,videostream,audiostream,disablee,renderr,publisherr,openlayoutmenuu,mymessagee,othersmessagee}

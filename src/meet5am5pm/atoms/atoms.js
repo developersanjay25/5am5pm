@@ -26,6 +26,10 @@ var courseidd = atom({
     default : '' 
 });
 
+var profilee = atom({
+    key : 'profilee',
+    default : '' 
+});
 
 var namee = atom({
     key : 'namee',
@@ -47,4 +51,4 @@ var sidepanell =atom({
     key : 'sidepanell',
     default : false
 })
-export  {namejoinn,roomjoinn,courseidd,sidepanell,rolee,emaill,namee,roomm,joinn}
+export  {namejoinn,roomjoinn,profilee,courseidd,sidepanell,rolee,emaill,namee,roomm,joinn}

@@ -13,7 +13,7 @@ import Chat from "../conference/Chat";
 import Contacts from "../conference/Contacts";
 import "../../styles/chatAndContacts.css";
 import $ from 'jquery';
-import { chatcontactt, chatopenn } from "../../atoms/chatatoms";
+import { chatcontactt, chatopenn, onlineuserr } from "../../atoms/chatatoms";
 // THEME
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 
@@ -72,7 +72,7 @@ const theme = createTheme({
 // FOr tab
 const tab = {
       minWidth: 100, // a number of your choice
-      width: 100, // a number of your choice
+      width: 'fit-content', // a number of your choice
   };
 
 
@@ -80,6 +80,7 @@ const ChatAndContactDrawer = (props) => {
   const [chatopen, setChatopen] = useRecoilState(chatopenn);
 
   const [value, setValue] = useRecoilState(chatcontactt);
+  const [onlineuser,setonlineuser] = useRecoilState(onlineuserr);
 
   const handleChange = (e,newValue) => {
     setValue(newValue);
@@ -139,7 +140,7 @@ const ChatAndContactDrawer = (props) => {
         aria-label="secondary tabs example"
       >
         <Tab style={tab}  value="CHAT" label="CHAT" />
-        <Tab style={tab}  iconPosition="start" value="CONTACT" label= "CONTACT"  />
+        <Tab style={tab}  iconPosition="start" value="CONTACT" label= {`CONTACT (${onlineuser.length})`}  />
       </Tabs>
           
         </div>

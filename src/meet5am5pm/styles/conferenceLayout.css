@@ -30,7 +30,7 @@
   border:1px solid gray;
   position: relative;
   /* display: none; */
-  background-image: url(../../Images/meetimages/videobackground.png);
+  /* background-image: url(../../Images/meetimages/videobackground.png); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -74,7 +74,17 @@
 #layoutVisitor{
   scroll-behavior: smooth;
 }
-
+#backgroundimg{
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  height: 65%;
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+  aspect-ratio: 4/4;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
 /* Row */
 .layoutvisitorrow{
   height: 100%;
@@ -85,11 +95,12 @@
   display: flexbox;
   flex-direction: row;
   margin-top: 5px;
+  margin-left: 10px;
 }
 
 .layouthostrow{
   display: block;
-  width: calc(100% - 300px);;
+  width: calc(100% - 250px);
 }
 .layoutrow{
    width: 100%;

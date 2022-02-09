@@ -8,6 +8,8 @@ import Modal from '@mui/material/Modal';
 import { Box, width } from '@mui/system';
 
 
+import { profilee } from "../atoms/atoms";
+
 //recoil imports
 import { useRecoilState } from 'recoil';
 
@@ -63,12 +65,13 @@ const useStyles = makeStyles({
 })
 
 
-const Drawer_Account_staff = () => {
+const Drawer_Account_staff = (props) => {
 
 
     //modal function
     const [open, setOpen] = React.useState(false);
     const modalhandleClose = () => setOpen(false);
+  const [profile, setProfile] = useRecoilState(profilee);
 
     const classes = useStyles();
 
@@ -97,14 +100,14 @@ const Drawer_Account_staff = () => {
                 </div>
                 <Paper className={classes.sidebarStyle2}>
                 <Stack direction="row" justifyContent="center">
-                <Avatar sx={{ width: 90, height: 90 }}  style={{marginTop:'-50px'}} alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+                <Avatar sx={{ width: 90, height: 90 }}  style={{marginTop:'-50px'}} alt="Cindy Baker" src={profile  } />
                 </Stack>
                 <br></br>
                   <div className={classes.sidebarStyle3}>
                     <Typography><b>Welcome</b> 5am 5pm </Typography>
-                    <Typography style={{margin:'auto'}} className={classes.emailstyle}><b>Name</b>: sanjayyyhsagdsafgasgdhGsagsjkashajhs</Typography>
-                    <Typography style={{margin:'auto'}} className={classes.emailstyle}><b>Email</b>: admin@admin.comdhsajhdusahjshdad</Typography>
-                    <Typography><b>User ID</b>: 524878</Typography>
+                    <Typography style={{margin:'auto'}} className={classes.emailstyle}><b>Name</b>: {props.name} {props.lastname}</Typography>
+                    <Typography style={{margin:'auto'}} className={classes.emailstyle}><b>course Id</b>: {props.courseid}</Typography>
+                    {/* <Typography><b>User ID</b>: 524878</Typography> */}
                   </div>
                   <div className={classes.sidebarStyle4}>
                     <Button variant="outlined" style={{color:'#003db3'}} onClick={myaccount}>My Account</Button>&nbsp; <Button variant="contained" color="primary" onClick={signoutHandler}>Sign Out</Button> 

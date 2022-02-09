@@ -3,14 +3,15 @@ import $ from 'jquery';
 import { useEffect } from 'react';
 import {layoutforjs} from '../conference/ConferenceLayout'
 import React,{useRef,useState} from 'react'
-import { audiodevicee, audioo,audiooutputdevicee, bandwidthh, camerachangee, ismutedd, chatopenn, disablee, handrise, opendialogg, publisherr, renderr, screensharee, videodevicee, videoo, videoresolutionn, overflowcheckk, swiperreff } from '../../atoms/chatatoms';	
+import { audiodevicee, audioo,audiooutputdevicee, bandwidthh, camerachangee, ismutedd, chatopenn, disablee, handrise, opendialogg, publisherr, renderr, screensharee, videodevicee, videoo, videoresolutionn, overflowcheckk, swiperreff, leftbuttonn, Rightbuttonn } from '../../atoms/chatatoms';	
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import {  namee, namejoinn, rolee } from '../../atoms/atoms';
+import {  namee, namejoinn, profilee, rolee } from '../../atoms/atoms';
 import bootbox from 'bootbox';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 
 import { propTypes } from 'react-bootstrap/esm/Image';
+import { layout } from '../../atoms/conference';
 
 
 export const swipersliderarr = [];
@@ -95,6 +96,7 @@ function StartJanusServerRoom(props)
 	const [audiodevice, setAudiodevice] = useRecoilState(audiodevicee);
 	const [videodevice, setVideodevice] = useRecoilState(videodevicee);
 	const [bandwidth, setBandwidth] = useRecoilState(bandwidthh);
+	const [profile, setprofile] = useRecoilState(profilee);
 
 	const [role, setRole] = useRecoilState(rolee);
 
@@ -104,6 +106,10 @@ function StartJanusServerRoom(props)
 	const [swiperRef, setSwiperRef] = useRecoilState(swiperreff);
 	
 	
+	//overflow 
+	const [leftbutton,setLeftButton] = useRecoilState(leftbuttonn)
+	const [Rightbutton,setRightButton] = useState(Rightbuttonn);
+	const [layoutt,setlayout] = useRecoilState(layout);
 
 		const screenshare = () =>
 		{
@@ -412,7 +418,7 @@ function StartJanusServerRoom(props)
 							room: myroom,
 							pin : pin,
 							ptype: "publisher",
-							display: 'screenshare ' + username,
+							display: 'screenshare ' + username +" " + profile,
 							record:true,
 							rec_dir:'/var/www/vhost/janusone.nowdigitaleasy.com/recordings'
 						};
@@ -645,7 +651,8 @@ function StartJanusServerRoom(props)
 					console.log('muted',stream.getAudioTracks()[0].muted);
 					setIsMuted(true);
 				}
-					video.style.backgroundImage = "url('/static/media/videobackground.66adbed0.png')"
+					// video.style.backgroundImage = "url('/static/media/videobackground.66adbed0.png')"
+					$('#yourvideo').append("<img id='backgroundimg' src='"+ profile +"'/>");
 					console.log(mystream.getAudioTracks());
                     console.log(`Using video device: ${videoTracks[0]}`);
                     video.srcObject = stream;
@@ -683,10 +690,10 @@ function StartJanusServerRoom(props)
 	{
 		const register = { "request": "joinandconfigure", "room": myroom, "ptype": "publisher","record" : false,
 		"rec_dir" : "/var/www/vhost/janusone.nowdigitaleasy.com/recordings" ,
-		// pin : pin,
-		"private_id" : pin,
+		pin : pin,
+		// "private_id" : pin,
 		"secret" : secret,
-		"display": role+" "+name };
+		"display": role+" "+name + " "+profile};
 					console.log("join register",register)
 		sfutest.send({ "message": register });
 	}
@@ -697,8 +704,7 @@ function StartJanusServerRoom(props)
 			request : "create",
 			room : myroom,
 			publishers: 100,
-			// pin : pin,
-			// "secret" : secret,
+			// pin : pin,  "secret" : secret,
 			record : false,
 			rec_dir : '/var/www/vhosts/janusone.nowdigitaleasy.com/recordings' 
 	}
@@ -953,7 +959,8 @@ function StartJanusServerRoom(props)
 						onremotestream: function (stream) {
 
       						// document.querySelector('.swiper-wrapper').id = "layoutVisitor";
-							
+
+							 
 							console.log("Remote feed #" + remoteFeed.rfindex + ", stream:", stream);
 							let addButtons = false;
 							if ($('#remotevideo' + remoteFeed.rfindex).length === 0) {
@@ -967,8 +974,9 @@ function StartJanusServerRoom(props)
 								// var idd = "videoremote"+ remoteFeed.rfindex;
 								// swipersliderarr.push(<SwiperSlide id= {idd} className="visitor click"><div ><video className="rounded centered relative hide" id="remotevideo` + remoteFeed.rfindex + `" width="100%" height="100%" autoplay playsinline/></div></SwiperSlide>);
 						        $('#remote'+remoteFeed.rfindex).appendTo('#videoremote'+remoteFeed.rfindex);
-		
-							var selector = document.querySelectorAll('.click');
+								const myArr = remoteFeed.rfdisplay.split(" ");
+								$('#videoremote'+ remoteFeed.rfindex).append("<img id='backgroundimg' src='"+myArr[2]+"'/>");
+								var selector = document.querySelectorAll('.click');
 							
 
 							for(let i=0;i<selector.length;i++)
@@ -1003,6 +1011,9 @@ function StartJanusServerRoom(props)
 								else{
 									
 								}
+
+							
+
 							}
 								// $('#videoremote' + remoteFeed.rfindex).append('<video class="rounded centered relative hide" id="remotevideo' + remoteFeed.rfindex + '" width="100%" height="100%" autoplay playsinline/>');
 								// Show the video, hide the spinner and show the resolution when we get a playing event
@@ -1039,6 +1050,38 @@ function StartJanusServerRoom(props)
 								$('#remotevideo' + remoteFeed.rfindex).removeClass('hide').show();
 							}
 
+
+// Setting scroll button
+
+						let videocontainer = document.getElementById('layoutVisitor');
+
+						myFunction();
+
+						videocontainer.onscroll =  function() { myFunction() }
+						function myFunction() {
+							
+							console.log('top leftt',layoutforjs);
+
+							if(layoutforjs == 'column'){
+							
+							console.log('top leftt',videocontainer.scrollLeft);
+							console.log('top leftt',videocontainer.scrollWidth - videocontainer.clientWidth);
+							setLeftButton((videocontainer.scrollLeft > 0) ? 'block' : 'none');
+							setRightButton((videocontainer.scrollLeft != videocontainer.scrollWidth - videocontainer.clientWidth) ? 'block' : 'none');
+							}
+							else if(layoutforjs == 'row' || 'whiteboard'){
+								console.log('top',videocontainer.scrollTop);
+								console.log('top',videocontainer.scrollHeight - videocontainer.clientHeight);
+								setLeftButton((videocontainer.scrollTop > 0) ? 'block' : 'none');
+								setRightButton((videocontainer.scrollTop != videocontainer.scrollHeight - videocontainer.clientHeight) ? 'block' : 'none');
+								
+							}
+							else if(layoutforjs == 'gallery'){
+								setLeftButton('none');
+								setRightButton('none');
+							}  }
+
+
 						},
 						oncleanup: function () {
 							Janus.log(" ::: Got a cleanup notification (remote feed " + id + ") :::");
@@ -1061,7 +1104,9 @@ function StartJanusServerRoom(props)
 							success: function (jsep) {
 								Janus.debug("Got publisher SDP!");
 								Janus.debug(jsep);
-								const publish = { "request": "configure", "audio": audio, "video": video };
+			
+
+								const publish = { "request": "configure", "audio": audio, "video": video, pin : pin, secret : secret };
 								sfutest.send({ "message": publish, "jsep": jsep });
 							},
 							error: function (error) {
@@ -1079,7 +1124,7 @@ function StartJanusServerRoom(props)
 							success: function (jsep) {
 								Janus.debug("Got publisher SDP!");
 								Janus.debug(jsep);
-								const publish = { "request": "configure",  audio : audio,video : video };
+								const publish = { "request": "configure",  audio : audio,video : video , pin : pin, secret : secret };
 								sfutest.send({ "message": publish, "jsep": jsep });
 
 								if(sfutest){
@@ -1141,7 +1186,7 @@ function StartJanusServerRoom(props)
 							success: function (jsep) {
 								Janus.debug("Got publisher SDP!");
 								Janus.debug(jsep);
-								const publish = { "request": "configure", audio: true, video : true };
+								const publish = { "request": "configure", audio: true, video : true,pin : pin, secret : secret };
 								sfutest.send({ "message": publish, "jsep": jsep });
 								const videoobj = document.querySelector('video#localvideo');
 								videoobj.srcObject = null
@@ -1162,7 +1207,7 @@ function StartJanusServerRoom(props)
 								Janus.debug("Got publisher SDP!");
 								Janus.debug(jsep);
 								console.log('publish');
-								const publish = { request	 : "configure",  audio: audio,video: video ,record : true};
+								const publish = { request	 : "configure",  audio: audio,video: video ,record : true,pin : pin, secret : secret};
 								sfutest.send({ "message": publish, "jsep": jsep });
 								// setVideodevice('');		
 								
@@ -1211,7 +1256,7 @@ function StartJanusServerRoom(props)
 							success: function (jsep) {
 								Janus.debug("Got publisher SDP!");
 								Janus.debug(jsep);
-								const publish = { "request": "configure", "audio": audio, "video": video };
+								const publish = { "request": "configure", "audio": audio, "video": video,pin : pin, secret : secret };
 								sfutest.send({ "message": publish, "jsep": jsep });
 								const videoobj = document.querySelector('video#localvideo');
 							},

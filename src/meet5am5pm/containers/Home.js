@@ -4,7 +4,7 @@ import {useState,useEffect} from 'react';
 import Tabs from "../components/home/Tabs";
 import Mediacontainer from "../components/home/Mediacontainer";
 import Devicegetting from '../components/conference/devicegetting';
-import { emaill, joinn, namee, namejoinn, roomjoinn, rolee, roomm, sidepanell, courseidd } from "../atoms/atoms";
+import { emaill, joinn, namee, namejoinn, roomjoinn, rolee, roomm, sidepanell, courseidd, profilee } from "../atoms/atoms";
 import Header from "../components/initial/Header";
 import "../styles/main.css";
 import { Drawer, Typography } from "@material-ui/core";
@@ -24,11 +24,13 @@ function Home() {
 
 
   const [namejoin, setNamejoin] = useRecoilState(namejoinn);
+  const [lastname, setLastname] = useState();
   const [roomjoin, setRoomjoin] = useRecoilState(roomjoinn);
   const [join, setjoin] = useRecoilState(joinn);
   const [email, setEmail] = useRecoilState(emaill);
   const [role, setRole] = useRecoilState(rolee);
   const [courseid, setCourseid] = useRecoilState(courseidd);
+  const [profile, setprofile] = useRecoilState(profilee);
   const [date,setDate] = useState();
   const [time,setTime] = useState();
   
@@ -38,12 +40,6 @@ function Home() {
   const [sidepanel,setSidepanel] = useRecoilState(sidepanell);
 
   
-  const [audiodevice, setAudiodevice] = useRecoilState(audiodevicee);
-  const [videodevice, setVideodevice] = useRecoilState(videodevicee);
-  
-  const [oldDeviceId,setOldDeviceId] = useRecoilState(olddeviceid);
-
-
     const { room } = queryString.parse(window.location.search);
     console.log("home",room);
 
@@ -62,6 +58,8 @@ function Home() {
       setEmail(resp.data.data[0].mobile);
       setNamejoin(resp.data.data[0].first_name);
       setRole(resp.data.data[0].role);
+      setprofile(resp.data.data[0].profile_dp);
+      // setLastname(resp.data.data[0].last_name)
 
           console.log(resp.data.data[0].first_name);
   
@@ -125,7 +123,7 @@ document.body.style= "background:linear-gradient(180deg,#004590 60%,#1c8cbd); ov
             open={sidepanel}
             onClose={(e) => setSidepanel(false)}
           >
-            <Drawer_Account_staff/>
+            <Drawer_Account_staff name={namejoin} lastname={lastname} courseid={courseid} />
           </Drawer>
     </div>
   );

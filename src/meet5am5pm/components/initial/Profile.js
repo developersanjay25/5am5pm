@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import { useRecoilState } from "recoil";
-import { sidepanell } from "../../atoms/atoms";
+import { profilee, sidepanell } from "../../atoms/atoms";
 const useStyles = makeStyles((theme) => ({
   typography: {
     padding: theme.spacing(2),
@@ -16,6 +16,7 @@ const Profile = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [sidepanel, setSidepanel] = useRecoilState(sidepanell);
+  const [profile, setProfile] = useRecoilState(profilee);
 
   const handleClick = (event) => {
     // setAnchorEl(event.currentTarget);
@@ -32,7 +33,7 @@ const Profile = (props) => {
 
   return (
     <div>
-      <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" onClick={handleClick} />
+      <Avatar alt="Remy Sharp" src={profile} onClick={handleClick} />
 
       <Popover
         id={id}

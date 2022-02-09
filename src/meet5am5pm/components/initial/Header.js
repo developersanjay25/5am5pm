@@ -22,14 +22,14 @@ const Header = (props) => {
     <div id="header">
       <div className="header-logo">
         {/* <img src={logo} className='logo' /> */}
-      <div className="header-date-time">{time}</div>
+      {/* <div className="header-date-time">{time}</div> */}
 
       </div>
       {/* <div className="header-help-popover">
         <HelpPopover />
       </div> */}
       <div className="header-settings">
-        <Settings />
+        {/* <Settings /> */}
       </div>
       <div className="header-user-profile">
         <Profile />

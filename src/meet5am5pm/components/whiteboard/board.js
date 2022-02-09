@@ -328,8 +328,8 @@ function Board(props)
    {
     myCanvas = new fabric.Canvas('board',{
         isDrawingMode: true,
-        height:  window.innerHeight - 100,
-        width: window.innerWidth - 400,
+        height:  window.innerHeight- 40,
+        width: window.innerWidth - 300,
         backgroundColor: '#ffffff'
      })
      myCanvas.totArray = new Array();

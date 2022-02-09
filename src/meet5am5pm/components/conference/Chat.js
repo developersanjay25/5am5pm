@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { formatAMPM } from "../../utils/genFunc";
 import { socket } from "../../config";
-import { emaill, namejoinn, roomjoinn, rolee } from "../../atoms/atoms";
+import { emaill, namejoinn, roomjoinn, rolee, profilee } from "../../atoms/atoms";
 import { useRecoilState } from "recoil";
 import { audioo, videoo,chatopenn, disablee, handrise, messagecountt, onlineuserr } from "../../atoms/chatatoms";
 import {  toast } from 'react-toastify';
@@ -47,6 +47,7 @@ const Chat = (props) => {
   const [namejoin, setNamejoin] = useRecoilState(namejoinn);
   const [roomjoin, setRoomjoin] = useRecoilState(roomjoinn);
   const [email, setEmail] = useRecoilState(emaill);
+  const [profile, setprofile] = useRecoilState(profilee);
 
   // For Socket
   const [handrisee, setHandrise] = useRecoilState(handrise);
@@ -86,7 +87,7 @@ const Chat = (props) => {
 
   useEffect(() => {
     console.log(roomjoin, namejoin );
-    socket.emit("join", { room, name,email,role }, (error) => {
+    socket.emit("join", { room, name,email,role ,profile }, (error) => {
       if (error) {
         alert(error);
         sessionStorage.removeItem("name");
@@ -124,7 +125,6 @@ if(err){
   // Message
 useEffect(() => {
   socket.on(`message`,(message) =>{
-    
     if(role == 'Staf')
     socket.emit('user-permision',{'room' : roomjoin , 'email' : email, permission : true});
 
@@ -134,6 +134,7 @@ useEffect(() => {
   setMessage('');
   setforMessageCount(!formessagecount);
   console.log('count message woking',messagecount)
+
 
   let today = new Date(),
   date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
@@ -150,7 +151,7 @@ useEffect(() => {
     console.log(message);
   }
 }
-console.log('email',parseInt(message.email),email.toString())   
+console.log('profile',message)   
 
           if(message.user === "admin")
           {
@@ -159,32 +160,34 @@ console.log('email',parseInt(message.email),email.toString())
             sessionStorage.removeItem("email"); 
           }       
           else if(parseInt(message.email) === email){
-      
-                if(message.file){
+            document.getElementById('emptymessage').style = 'display: none';
+            
+            if(message.file){
                   if(imagextension(extention)){
-                    $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='myfile'><div class='lightgallery'><a href="+message.file+"><embed class='files' allow='fullscreen;' data-lightbox='image' src='"+message.file+"'/></a></div><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
+                    $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+message.profile+"'/></div><div class='myfile'><div class='lightgallery'><a href="+message.file+"><embed class='files' allow='fullscreen;' data-lightbox='image' src='"+message.file+"'/></a></div><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
                   }
                   else{
-                  $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='myfile'><embed class='files' allow='fullscreen;' src='"+message.file+"'/><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
+                  $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+message.profile+"'/></div><div class='myfile'><embed class='files' allow='fullscreen;' src='"+message.file+"'/><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
                 }
                 }
             else{
-              $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='mychat'><p class='mymsg'>"+message.text.message +"</p><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
+              $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+message.profile+"'/></div><div class='mychat'><p class='mymsg'>"+message.text.message +"</p><div class='mycreatedtime'>"+ message.text.time +"</div></div></div>");
               $("#send").val('');
             }
           }
-          else{     
+          else{ 
+           document.getElementById('emptymessage').style = 'display: none';
             if(message.file){ 
               if(imagextension(extention)){
-                $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div> <div class='file'><p class='username'>"+ message.user + "</p><div class='lightgallery'><a href="+message.file+"><embed class='files' allow='fullscreen;' src='"+message.file+"'/></a></div><div class='created'>"+ message.text.time +"</div></div></div>");
+                $("#messages").append("<div class='msg'><div><img class='avatar' src='"+message.profile+"'/></div> <div class='file'><p class='username'>"+ message.user + "</p><div class='lightgallery'><a href="+message.file+"><embed class='files' allow='fullscreen;' src='"+message.file+"'/></a></div><div class='created'>"+ message.text.time +"</div></div></div>");
                 
               } 
               else{
-              $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div> <div class='file'><p class='username'>"+ message.user + "</p><embed class='files' allow='fullscreen;' src='"+message.file+"'/><div class='created'>"+ message.text.time +"</div></div></div>");
+              $("#messages").append("<div class='msg'><div><img class='avatar' src='"+message.profile+"'/></div> <div class='file'><p class='username'>"+ message.user + "</p><embed class='files' allow='fullscreen;' src='"+message.file+"'/><div class='created'>"+ message.text.time +"</div></div></div>");
              }
              }
              else{
-              $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div><div><p class='username'>"+ message.user + "</p><div class='message left-top'>"+ message.text.message +"<div class='created'>"+ message.text.time +"</div></div></div></div>");
+              $("#messages").append("<div class='msg'><div><img class='avatar' src='"+message.profile+"'/></div><div><p class='username'>"+ message.user + "</p><div class='message left-top'>"+ message.text.message +"<div class='created'>"+ message.text.time +"</div></div></div></div>");
               $("#send").val('');
               }
                 }
@@ -228,6 +231,7 @@ function imagextension(extension){
 socket.on('loadmsg',(loadmsg) => {
   console.log("sending old messages",loadmsg);
   for(let i=0 ; i<loadmsg.length; i++){
+    document.getElementById('emptymessage').style = 'display: none';
 
     if(loadmsg[i].file){
   //  Defining file link
@@ -240,30 +244,30 @@ socket.on('loadmsg',(loadmsg) => {
     }
   }
   console.log('email',parseInt(loadmsg[i].email),email);
-
+  var avatarr = loadmsg[i].profile ? loadmsg[i].profile : avatar;
   if(parseInt(loadmsg[i].email) === email){
     if(loadmsg[i].file){
       if(imagextension(extention)){
-        $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='myfile'><div class='lightgallery'><a href="+loadmsg[i].file+"><embed class='files' allow='fullscreen;' data-lightbox='image' src='"+loadmsg[i].file+"'/></a></div><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
+        $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+ avatarr +"'/></div><div class='myfile'><div class='lightgallery'><a href="+loadmsg[i].file+"><embed class='files' allow='fullscreen;' data-lightbox='image' src='"+loadmsg[i].file+"'/></a></div><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
       }
       else{
-      $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='myfile'><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
+      $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatarr+"'/></div><div class='myfile'><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
    }
   }
     else{
-      $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+avatar+"'/></div><div class='mychat'><p class='mymsg'>"+loadmsg[i].text +"</p><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
+      $("#messages").append("<div id='mychat'><div><img class='myavatar' src='"+ avatarr +"'/></div><div class='mychat'><p class='mymsg'>"+loadmsg[i].text +"</p><div class='mycreatedtime'>"+ loadmsg[i].created +"</div></div></div>");
     }
         }  
         else{    
         if(loadmsg[i].file){  
           if(imagextension(extention)){
-            $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div> <div class='file'><p class='username'>"+ loadmsg[i].user + "</p><div class='lightgallery'><a href="+loadmsg[i].file+"><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/></a><div><div class='created'>"+ loadmsg[i].created +"</div></div></div>");
+            $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatarr+"'/></div> <div class='file'><p class='username'>"+ loadmsg[i].user + "</p><div class='lightgallery'><a href="+loadmsg[i].file+"><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/></a><div><div class='created'>"+ loadmsg[i].created +"</div></div></div>");
           }
           else{
-            $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div> <div class='file'><p class='username'>"+ loadmsg[i].user + "</p><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/><div class='created'>"+ loadmsg[i].created +"</div></div></div>");
+            $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatarr+"'/></div> <div class='file'><p class='username'>"+ loadmsg[i].user + "</p><embed class='files' allow='fullscreen;' src='"+loadmsg[i].file+"'/><div class='created'>"+ loadmsg[i].created +"</div></div></div>");
            }}
            else{
-          $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatar+"'/></div><div><p class='username'>"+ loadmsg[i].user + "</p><div class='message left-top'>"+ loadmsg[i].text +"<div class='created'>"+ loadmsg[i].created +"</div></div></div></div>");
+          $("#messages").append("<div class='msg'><div><img class='avatar' src='"+avatarr+"'/></div><div><p class='username'>"+ loadmsg[i].user + "</p><div class='message left-top'>"+ loadmsg[i].text +"<div class='created'>"+ loadmsg[i].created +"</div></div></div></div>");
           $("#send").val('');
         }  
         }}
@@ -469,6 +473,11 @@ useEffect(() => {
       {/* Chat */}
 
       <div id="messages">
+            <div id='emptymessage'> 
+                <icons.Chat style={{fontSize : '40px'}}/>
+                <Typography variant="h6"> Your Direct Messages will shown up hare</Typography>
+                <Typography variant="h6">Find people to chat with in the 'Contacts' tab</Typography>
+            </div>
       </div>
 
       <p style={{display:fileicon}} className='fileicon'>{filename}   <IconButton onClick={deletefile} aria-label="delete" size="small">

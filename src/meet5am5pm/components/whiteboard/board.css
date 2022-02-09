@@ -1,18 +1,18 @@
 .board{
     background-color: white;
     margin: 0 auto;
-    border: 5px solid #3c4043;
+    /* border: 5px solid #3c4043; */
     /* cursor: url('../../../images/Pencil.cur'),all-scroll; */
 }
 .upper-canvas{
     background: transparent;
 }
 
-.css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
+.container .css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab.css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab {
     background-color: white !important;
     color: black !important;
     box-shadow: none !important;
 }
-.css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover{
+.container .css-fd1af4-MuiButtonBase-root-MuiFab-root-MuiSpeedDial-fab:hover{
     background-color: white !important;
 }

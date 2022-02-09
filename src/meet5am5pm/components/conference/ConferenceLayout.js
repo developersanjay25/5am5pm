@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import "../../styles/conferenceLayout.css";
 import { useRecoilState } from "recoil";
-import { chatopenn , audioo, videoo, opendialogg, settingspreload, Toastt, Recordon, overflowcheckk, swiperreff, ismutedd} from "../../atoms/chatatoms";
+import { chatopenn , audioo, videoo, opendialogg, settingspreload, Toastt, Recordon, overflowcheckk, swiperreff, ismutedd, leftbuttonn, Rightbuttonn} from "../../atoms/chatatoms";
 import StartJanusServerRoom, { videoremote1 } from "./StartJanusServerRoom";
 import $ from 'jquery';
 import { layout } from "../../atoms/conference";
@@ -44,8 +44,8 @@ const ConferenceLayout = (props) => {
   const [chatopen,setChatopen] = useRecoilState(chatopenn);
   const [overflowcheck,setOverflow] = useRecoilState(overflowcheckk);
   const [largevideo,setLargevideo] = useState(false);
-  const [leftbutton,setLeftButton] = useState('none');
-  const [Rightbutton,setRightButton] = useState('none');
+  const [leftbutton,setLeftButton] = useRecoilState(leftbuttonn);
+  const [Rightbutton,setRightButton] = useState(Rightbuttonn);
   const [layoutt,setlayout] = useRecoilState(layout);
   const [role,setRole] = useRecoilState(rolee);
   const { room } = queryString.parse(window.location.search);
@@ -141,7 +141,6 @@ useEffect(() => {
       }
       else if(layoutt === 'column'){
         layoutforjs = 'column';
-
         $('#layoutHost').removeClass();
         $('#layoutVisitor').removeClass();
         $('#layout').removeClass();
@@ -242,30 +241,30 @@ if(layoutt == 'column'){
 
 useEffect(() => {
   let videocontainer = document.getElementById('layoutVisitor');
-  setRightButton('block')
-  // videocontainer.onscroll =  function() { myFunction() }
-  // function myFunction() {
+  // setRightButton('block')
+  videocontainer.onscroll =  function() { myFunction() }
+  function myFunction() {
     
-  //   console.log('top leftt',layoutt);
+    console.log('top leftt',layoutt);
 
-  //   if(layoutt == 'column'){
+    if(layoutt == 'column'){
       
-  //   console.log('top leftt',videocontainer.scrollLeft);
-  //   console.log('top leftt',videocontainer.scrollWidth - videocontainer.clientWidth);
-  //     setLeftButton((videocontainer.scrollLeft > 0) ? 'block' : 'none');
-  //     setRightButton((videocontainer.scrollLeft != videocontainer.scrollWidth - videocontainer.clientWidth) ? 'block' : 'none');
-  //     }
-  //     else if(layoutt == 'row' || 'whiteboard'){
-  //       console.log('top',videocontainer.scrollTop);
-  //       console.log('top',videocontainer.scrollHeight - videocontainer.clientHeight);
-  //       setLeftButton((videocontainer.scrollTop > 0) ? 'block' : 'none');
-  //       setRightButton((videocontainer.scrollTop != videocontainer.scrollHeight - videocontainer.clientHeight) ? 'block' : 'none');
+    console.log('top leftt',videocontainer.scrollLeft);
+    console.log('top leftt',videocontainer.scrollWidth - videocontainer.clientWidth);
+      setLeftButton((videocontainer.scrollLeft > 0) ? 'block' : 'none');
+      setRightButton((videocontainer.scrollLeft != videocontainer.scrollWidth - videocontainer.clientWidth) ? 'block' : 'none');
+      }
+      else if(layoutt == 'row' || 'whiteboard'){
+        console.log('top',videocontainer.scrollTop);
+        console.log('top',videocontainer.scrollHeight - videocontainer.clientHeight);
+        setLeftButton((videocontainer.scrollTop > 0) ? 'block' : 'none');
+        setRightButton((videocontainer.scrollTop != videocontainer.scrollHeight - videocontainer.clientHeight) ? 'block' : 'none');
         
-  //     }
-  //     else if(layoutt == 'gallery'){
-  //       setLeftButton('none');
-  //       setRightButton('none');
-  //     }  }
+      }
+      else if(layoutt == 'gallery'){
+        setLeftButton('none');
+        setRightButton('none');
+      }  }
 
 },[layoutt]);
 

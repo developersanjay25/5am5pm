@@ -75,7 +75,7 @@ function permissio(mail,permission)
     <div id="online">
     {onlineuser.map((user) => (
       <div id="onlinebackground"><ul>
-       <li><img id="avatar" src={avatar} /></li>
+       <li><img id="avatar" src={user.profile} /></li>
        <li>
          <ul>
        <li id="onlinepeoplename"><p style={{margin : 0}} >{user.name}</p><p id='role'>{user.role}</p> </li>

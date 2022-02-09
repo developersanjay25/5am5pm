@@ -4,7 +4,7 @@ import "../../styles/controlBarBottom.css";
 import BottomIcons from "./BottomIcons";
 import { dateWithTime } from "../../utils/genFunc";
 import ChatIcon from "@material-ui/icons/Chat";
-import { IconButton } from "@material-ui/core";
+import { Fade, IconButton, Slide } from "@material-ui/core";
 import GroupIcon from "@material-ui/icons/Group";
 import * as icons from "@material-ui/icons";
 import { audiodevicee, camerachangee, messagecountt, opendialogg, videodevicee } from "../../atoms/chatatoms";
@@ -40,7 +40,8 @@ const ControlBarBottom = (props) => {
   const [messagecount, setMessagecount] = useRecoilState(messagecountt);
   const [opendialog, setOpendialog] = useRecoilState(opendialogg);
   const [chatopen, setChatopen] = useRecoilState(chatopenn);
-
+  const [bottomicon, setBottomicon] = React.useState(true);
+  const bottom = React.useRef();
 
 
   useEffect(() => {
@@ -50,9 +51,38 @@ const ControlBarBottom = (props) => {
     };
   }, []);
 
+
+
+var idleMouseTimer;
+var forceMouseHide = false;
+$(document).mousemove(function (ev) {
+      
+        if (!forceMouseHide) {
+
+          setBottomicon(true)
+
+          clearTimeout(idleMouseTimer);
+          // if (isEnable) {
+              idleMouseTimer = setTimeout(function () {
+                setBottomicon(false);
+                forceMouseHide = true;
+                  setTimeout(function () {
+                      forceMouseHide = false;
+                  }, 1000);
+              }, 5000);
+          }
+});
+
+document.body.style= "overflow:hidden"
+
   return (
+<Slide direction="up" in={bottomicon} >
+
     <div id="bottom-icon-bar">
-      <div className="icon-bar-left">{time}</div>
+
+      <div className="icon-bar-left">
+        {/* {time} */}
+        </div>
       <div className="icon-bar-center">
         <BottomIcons />
         <SettingDialog/>
@@ -78,11 +108,7 @@ const ControlBarBottom = (props) => {
         </IconButton>
         </Tooltip>
 
-        {/* <Tooltip TransitionComponent={Zoom} title={"People Online"}>
-        <IconButton  style={iconbtn} color="default" aria-label="add an alarm" onClick={() => props.handleDrawerOpen("CONTACTS")}>
-          <icons.Group />
-        </IconButton>
-        </Tooltip> */}
+   
 
       
       </div>
@@ -104,9 +130,9 @@ const ControlBarBottom = (props) => {
       </Tooltip>
 
       </div>
-
-    </div>
-  );
+      </div>    
+    </Slide>
+    );
 };
 
 ControlBarBottom.propTypes = {};

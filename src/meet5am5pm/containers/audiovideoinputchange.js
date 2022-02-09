@@ -98,7 +98,7 @@ useEffect(() => {
             
                 ctx = canvas.getContext('2d'),
                 gradient = ctx.createLinearGradient(0, 0, 0, cheight);
-                gradient.addColorStop(1, '#a467af');
+                gradient.addColorStop(1, '#019875');
                 gradient.addColorStop(0.3, '#ff0');
                 gradient.addColorStop(0, '#f00');
                 canvas.style.display = 'block';
@@ -262,16 +262,17 @@ useEffect(() => {
   },[audiodevice,videodevice])
 
     return <>
-    <Typography style={{color:'white'}}>Audio Source</Typography>
-      <select  className='dropdownhome' id="audio-devicee" value={audiodevice} onChange={(e) => {setAudiodevice(e.target.value)}}>
-      </select>
     
-    <br/>
-
-      <Typography style={{color:'white'}}>video Source</Typography>
+    <Typography style={{color:'white'}}>Video Source</Typography>
       <select  className='dropdownhome' id="video-devicee" value={videodevice} onChange={(e) => {setVideodevice(e.target.value)}}>
       </select>
 
+    <br/>
+
+    <Typography style={{color:'white'}}>Audio Source</Typography>
+      <select  className='dropdownhome' id="audio-devicee" value={audiodevice} onChange={(e) => {setAudiodevice(e.target.value)}}>
+      </select>
+         
       <canvas id="audioequilizerr" width="150" height="30"></canvas>
 
     </>
